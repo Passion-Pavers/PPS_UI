@@ -9,7 +9,7 @@ const App: React.FC = () => {
 
   const handleSubmit = async () => {
     try {
-      const apiUrl = "http://localhost:5230/api/Tests";
+      const apiUrl = process.env.REACT_APP_API_URL + "/api/Tests";
       const response = await axios.post(apiUrl, { textboxname: inputValue });
 
       setResponseData("Successfully saved data with ID:" + response?.data?.id);
