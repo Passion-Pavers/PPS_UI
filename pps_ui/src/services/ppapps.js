@@ -1,6 +1,8 @@
 import axios from "axios";
-const baseUrl = "http://localhost:5109/api/applications";
-
+let baseUrl = process.env.REACT_APPS_SERVICE;
+if (!baseUrl) {
+  baseUrl = "http://3.85.17.0:5001/api/applications";
+}
 let token = null;
 
 const setToken = (newToken) => {
@@ -18,11 +20,6 @@ const getAllApps = () => {
     headers: { Authorization: token },
   };
   const request = axios.get(baseUrl, config);
-  //   const nonExisting = {
-  //     id: 10000,
-  //     content: 'This note is not saved to server',
-  //     important: true,
-  //   }
   return request.then((response) => response.data);
 };
 
