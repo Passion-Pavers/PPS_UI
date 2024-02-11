@@ -2,18 +2,13 @@ import axios from "axios";
 let baseUrl = process.env.REACT_APPS_SERVICE;
 if (!baseUrl) {
   baseUrl = "http://3.85.17.0:5001/api/applications";
+  //baseUrl = "http://localhost:5109/api/applications";
 }
 let token = null;
 
 const setToken = (newToken) => {
   token = `Bearer ${newToken}`;
 };
-
-/*
-const getAll = () => {
-  const request = axios.get(baseUrl)
-  return request.then(response => response.data)
-}*/
 
 const getAllApps = () => {
   const config = {

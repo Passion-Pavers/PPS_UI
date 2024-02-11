@@ -228,6 +228,8 @@ import {
   Typography,
   Snackbar,
   IconButton,
+  AppBar,
+  Toolbar,
 } from "@mui/material";
 import { Close as CloseIcon } from "@mui/icons-material";
 import LoginForm from "./components/LoginForm";
@@ -280,6 +282,8 @@ function App() {
 
   const handleLogout = () => {
     window.localStorage.clear();
+    setLoggedIn(false);
+    setShowLoginForm(true);
   };
 
   const handleCloseNotification = () => {
@@ -290,6 +294,18 @@ function App() {
     <ThemeProvider theme={theme}>
       <Container maxWidth="xl" sx={{ display: "flex", height: "100vh" }}>
         <Box sx={{ width: "60%", p: 4, boxSizing: "border-box" }}>
+          <AppBar position="static">
+            <Toolbar>
+              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                PPS
+              </Typography>
+              {isLoggedIn && (
+                <Button color="inherit" onClick={handleLogout}>
+                  Logout
+                </Button>
+              )}
+            </Toolbar>
+          </AppBar>
           <Header />
         </Box>
         <Box
