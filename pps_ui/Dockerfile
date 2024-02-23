@@ -21,7 +21,7 @@ EXPOSE 3000
 
 # Define environment variable
 ENV REACT_AUTH_SERVICE "http://3.85.17.0:5000/api/Auth"
-ENV REACT_APPS_SERVICE "http://3.85.17.0:5001/api/applications"
+ENV REACT_APPS_SERVICE "http://3.85.17.0:5001/api"
 
 # Run the application
 CMD ["npm", "start"]
