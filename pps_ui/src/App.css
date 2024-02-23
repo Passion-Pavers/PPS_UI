@@ -1,0 +1,29 @@
+/* App.css */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  align-content: center;
+}
+
+.App {
+  text-align: center;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+.logo-container {
+  width: 60%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.registration-form-container {
+  flex-grow: 1; /* Take remaining width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
