@@ -29,6 +29,11 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### To Install local server and deploy the minified files
+
+To deploy these minified files in Local machine, we can use local server, to install local server use the cmd `npm install -g serve`
+To deploy use the cmd `serve -s build`
+
 ### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
