@@ -1,4 +1,4 @@
-// src/components/Header.jsx
+// src/components/Header.js
 
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
@@ -35,13 +35,13 @@ const Header = () => {
     if (authToken) {
       setMenuItems([
         { path: "/profile", label: "Profile" },
-        { path: "/ppapps", label: "Applications" },
+        { path: "/mycreds", label: "My Creds" },
         { path: "/contact", label: "Contact Us" },
         { path: "/", label: "Logout", action: logout },
       ]);
     } else {
       setMenuItems([
-        { path: "/ppapps", label: "Applications" },
+        { path: "/mycreds", label: "My Creds" },
         { path: "/login", label: "Login" },
         { path: "/register", label: "Register" },
         { path: "/aboutus", label: "About Us" },
@@ -58,11 +58,11 @@ const Header = () => {
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Passion Pavers Services
+          Cred Store
         </Typography>
         {/* Always visible in the header */}
         <StyledLink to="/">Home</StyledLink>
-        <StyledLink to="/ppapps">Applications</StyledLink>
+        <StyledLink to="/mycreds">My Creds</StyledLink>
         {!authToken && (
           <>
             <StyledLink to="/login">Login</StyledLink>

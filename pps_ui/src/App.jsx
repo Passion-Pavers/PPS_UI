@@ -9,20 +9,22 @@ import { SnackbarProvider } from "./context/SnackbarProvider";
 import PpApps from "./components/PpApps";
 import PrivateRoute from "./components/PrivateRoute";
 import Home from "./components/Home";
+import PreviewApp from "./components/PreviewApp";
+import { LoadingProvider } from "./context/LoadingContext";
 
 function App() {
-  // const theme = createTheme({
-  //   palette: {
-  //     primary: {
-  //       main: "#81d4fa", // Update this to your desired primary color
-  //     },
-  //     secondary: {
-  //       main: "#1a237e", // Update this to your desired secondary color
-  //     },
-  //   },
-  // });
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#263238", // Update this to your desired primary color
+      },
+      secondary: {
+        main: "#607d8b", // Update this to your desired secondary color
+      },
+    },
+  });
 
-  const theme = createTheme();
+  //const theme = createTheme();
 
   const styles = {
     container: {
@@ -43,20 +45,26 @@ function App() {
       <CssBaseline />
       <Router>
         <SnackbarProvider>
-          <Paper style={styles.container}>
-            <Header1 />
-            <div style={styles.mainContent}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/" element={<PrivateRoute />}>
-                  <Route path="/ppapps" element={<PpApps />} />
-                </Route>
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Registration />} />
-              </Routes>
-            </div>
-            <Footer style={styles.footer} />
-          </Paper>
+          <LoadingProvider>
+            <Paper style={styles.container}>
+              <Header1 />
+              <div style={styles.mainContent}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/" element={<PrivateRoute />}>
+                    <Route path="/ppapps" element={<PpApps />} />
+                    <Route
+                      path="/ppapps/preview/:appName"
+                      element={<PreviewApp />}
+                    />
+                  </Route>
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Registration />} />
+                </Routes>
+              </div>
+              <Footer style={styles.footer} />
+            </Paper>
+          </LoadingProvider>
         </SnackbarProvider>
       </Router>
     </ThemeProvider>

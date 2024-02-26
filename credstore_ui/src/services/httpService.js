@@ -4,7 +4,6 @@ import axios from "axios";
 
 const httpService = axios.create({
   baseURL: process.env.REACT_APPS_SERVICE || "http://localhost:5109/api",
-  //baseURL: `http://3.85.17.0:5001/api`,
 });
 
 // Function to set the Bearer token in the request headers
