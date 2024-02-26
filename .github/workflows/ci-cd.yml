@@ -15,6 +15,7 @@ jobs:
 
       - name: Install dependencies and build artifacts
         run: |
+          cd ./pps_ui
           npm install  # Install npm dependencies
           npm run build  # Or any other npm command to generate build artifacts
 
