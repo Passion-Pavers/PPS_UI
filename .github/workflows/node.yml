@@ -27,7 +27,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         
     - run: pwd
-    - run: cd PPS_UI/PPS_UI
+    - run: cd ./pps_ui
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
