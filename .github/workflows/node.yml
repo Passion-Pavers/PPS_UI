@@ -28,7 +28,7 @@ jobs:
         
     - run: pwd
     - run: ls 
-    - run: cd pps_ui
+    - run: cp ./pps_ui/* ./
     - run: ls 
     - run: npm install
     - run: npm run build --if-present
