@@ -12,4 +12,11 @@ const register = async (registrationRequest) => {
   return response;
 };
 
-export default { login, register };
+//export default { login, register };
+const authService = {
+  login,
+  register
+};
+
+// Export the authService object
+export default authService;
