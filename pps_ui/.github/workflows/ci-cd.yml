@@ -1,0 +1,38 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main  # Modify this according to your branch name
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use the latest version of Ubuntu as the runner
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2  # Action to checkout the repository
+
+      - name: Install dependencies and build artifacts
+        run: |
+          npm install  # Install npm dependencies
+          npm run build  # Or any other npm command to generate build artifacts
+
+      - name: Copy artifacts to server
+        uses: appleboy/scp-action@master  # Action to copy files via SSH
+        with:
+          host: ${{ secrets.SERVER_HOST }}  # Add your server host as a secret
+          username: ${{ secrets.SERVER_USERNAME }}  # Add your server username as a secret
+          key: ${{ secrets.SERVER_SSH_KEY }}  # Add your SSH private key as a secret
+          source: "path/to/build/artifacts"  # Modify this path according to your build artifacts
+          target: "/path/on/server"  # Modify this path according to the location on your server
+
+      - name: Execute commands on server
+        uses: appleboy/ssh-action@master  # Action to execute commands via SSH
+        with:
+          host: ${{ secrets.SERVER_HOST }}  # Add your server host as a secret
+          username: ${{ secrets.SERVER_USERNAME }}  # Add your server username as a secret
+          key: ${{ secrets.SERVER_SSH_KEY }}  # Add your SSH private key as a secret
+          script: |
+            cd /path/on/server  # Change directory to where you copied the artifacts
+            # Execute any commands you need on the server
