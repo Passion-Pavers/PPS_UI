@@ -25,7 +25,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+        
     - run: pwd
     - run: cd PPS_UI/PPS_UI
     - run: npm ci
