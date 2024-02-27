@@ -32,4 +32,13 @@ jobs:
     - run: ls 
     - run: npm install
     - run: npm run build --if-present
+    - name: rsync deployments
+      uses: burnett01/rsync-deployments@5.1
+      with:
+          switches: -avzr --delete
+          path: ./*
+          remote_path: /var/app/
+          remote_host: ec2-3-85-17-0.compute-1.amazonaws.com
+          remote_user: root
+          remote_key: "${{ secrets.SSH_PRIVATE_KEY }}"
     
