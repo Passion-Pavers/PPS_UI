@@ -11,6 +11,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Home from "./components/Home";
 import PreviewApp from "./components/PreviewApp";
 import { LoadingProvider } from "./context/LoadingContext";
+import NoAuthRequiredRoute from "./components/NoAuthRequiredRoute";
 
 function App() {
   const theme = createTheme({
@@ -43,14 +44,15 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router>
-        <SnackbarProvider>
-          <LoadingProvider>
+      <LoadingProvider>
+        <Router>
+          <SnackbarProvider>
             <Paper style={styles.container}>
               <Header1 />
               <div style={styles.mainContent}>
                 <Routes>
                   <Route path="/" element={<Home />} />
+                  <Route path="/home" element={<Home />} />
                   <Route path="/" element={<PrivateRoute />}>
                     <Route path="/ppapps" element={<PpApps />} />
                     <Route
@@ -58,15 +60,17 @@ function App() {
                       element={<PreviewApp />}
                     />
                   </Route>
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/register" element={<Registration />} />
+                  <Route path="/" element={<NoAuthRequiredRoute />}>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Registration />} />
+                  </Route>
                 </Routes>
               </div>
               <Footer style={styles.footer} />
             </Paper>
-          </LoadingProvider>
-        </SnackbarProvider>
-      </Router>
+          </SnackbarProvider>
+        </Router>
+      </LoadingProvider>
     </ThemeProvider>
   );
 }

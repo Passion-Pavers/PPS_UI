@@ -1,4 +1,4 @@
-// Footer.js
+// src/components/Footer.jsx
 
 import React from "react";
 import { Typography, Link, Paper, Grid } from "@mui/material";

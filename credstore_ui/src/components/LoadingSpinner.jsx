@@ -1,5 +1,4 @@
 // src/components/LoadingSpinner.jsx
-
 import React from "react";
 import { CircularProgress, Box } from "@mui/material";
 import { useLoading } from "../context/LoadingContext";
@@ -7,9 +6,7 @@ import { useLoading } from "../context/LoadingContext";
 const LoadingSpinner = () => {
   const { loading } = useLoading();
 
-  if (!loading) return null;
-
-  return (
+  return loading ? (
     <Box
       display="flex"
       justifyContent="center"
@@ -25,7 +22,7 @@ const LoadingSpinner = () => {
     >
       <CircularProgress />
     </Box>
-  );
+  ) : null;
 };
 
 export default LoadingSpinner;

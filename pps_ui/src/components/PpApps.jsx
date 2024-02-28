@@ -3,17 +3,13 @@ import ppappsService from "../services/ppAppsService";
 import { Card, CardContent, Button, Grid, Typography } from "@mui/material";
 import { setAuthToken } from "../services/httpService";
 import { useNavigate } from "react-router-dom";
-import LoadingSpinner from "./LoadingSpinner";
-import { useLoading } from "../context/LoadingContext";
 
 const PpApps = () => {
   const [data, setData] = useState(null);
   const navigate = useNavigate();
-  const { showLoading, hideLoading } = useLoading();
 
   useEffect(() => {
     const fetchData = async () => {
-      showLoading();
       try {
         setAuthToken();
         const ppappsData = await ppappsService.getAll();
@@ -23,15 +19,11 @@ const PpApps = () => {
         }, 250);
       } catch (error) {
         console.error("Error fetching ppapps data:", error);
-      } finally {
-        setTimeout(() => {
-          hideLoading();
-        }, 250);
       }
     };
 
     fetchData();
-  }, [hideLoading, showLoading]); // Run the effect whenever the authToken changes
+  }, []); // Run the effect whenever the authToken changes
 
   const handlePreviewClick = (appName) => {
     // Navigate to the preview route, passing the application name
@@ -65,9 +57,7 @@ const PpApps = () => {
             </Grid>
           ))
         ) : (
-          <p>
-            <LoadingSpinner />
-          </p>
+          <p>Loading...</p>
         )}
       </Grid>
     </div>

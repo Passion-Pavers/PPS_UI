@@ -8,8 +8,18 @@ const PreviewApp = () => {
   // Dynamically create the URL based on the appName
   const match = useMatch("/ppapps/preview/:appName");
   const appName = match.params.appName;
-  const appUrl = `http://localhost:3000`;
-
+  let appUrl;
+  switch (appName) {
+    case "CredStore":
+      appUrl = "http://localhost:3000/";
+      break;
+    case "AnotherApp":
+      appUrl = "http://localhost:3000/";
+      break;
+    // Add more cases as needed
+    default:
+      appUrl = "";
+  }
   return (
     <Box
       display="flex"

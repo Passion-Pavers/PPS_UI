@@ -37,7 +37,7 @@ const Header = () => {
         { path: "/profile", label: "Profile" },
         { path: "/ppapps", label: "Applications" },
         { path: "/contact", label: "Contact Us" },
-        { path: "/", label: "Logout", action: logout },
+        { path: "/login", label: "Logout", action: logout },
       ]);
     } else {
       setMenuItems([

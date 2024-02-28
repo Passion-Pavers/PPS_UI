@@ -14,4 +14,9 @@ const register = async (registrationRequest) => {
   return response;
 };
 
-export default { login, register };
+const loginService = {
+  login,
+  register,
+};
+
+export default loginService;
