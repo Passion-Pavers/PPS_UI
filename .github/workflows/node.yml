@@ -34,14 +34,8 @@ jobs:
     - run: ls 
     - run: npm install
     - run: npm run build --if-present
-    - name: rsync deployments
-      uses: burnett01/rsync-deployments@5.1
-      with:
-          switches: -avzr --delete
-          path: ./*
-          remote_path: /var/app/
-          remote_host: ec2-52-91-186-233.compute-1.amazonaws.com
-          remote_user: ec2-user
-          remote_key: "${{ secrets.SSH_PRIVATE_KEY }}"
+    - run: ls -l
+    - name: Deploy to the server.
+      run: scp -i ${{ secrets.SSH_PRIVATE_KEY }} -r * ec2-user@52.91.186.233:/var/app/
           
     
