@@ -43,7 +43,9 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         source: "./build/*"
         target: "/var/app"
-        run: npm install -g serve ; serve -s build
+        script: |
+               npm install -g serve
+               serve -s build
 
           
     
