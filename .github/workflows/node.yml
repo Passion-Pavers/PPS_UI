@@ -56,6 +56,8 @@ jobs:
             USER_NAME: ${{secrets.USER_NAME}}
       
         run: |
+          pwd ; ls
+          whoami
           cd /var/app
           npm install -g serve
           serve -s build &
