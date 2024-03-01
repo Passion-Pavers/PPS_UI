@@ -49,8 +49,8 @@ jobs:
     
     steps:
          - run: pwd 
+         - run: cd ../..
          
-         - run: pwd
          - run: ls
          - run: npm install -g serve
          - run: serve -s build &
