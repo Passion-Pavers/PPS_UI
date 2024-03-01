@@ -48,8 +48,10 @@ jobs:
     needs: build
     
     steps:
-         - run: pwd ; ls
+         - run: pwd 
          - run: cd /var/app
+         - run: pwd
+         - run: ls
          - run: npm install -g serve
          - run: serve -s build &
          - run: curl http://localhost:3000
