@@ -44,24 +44,12 @@ jobs:
           
   deploy:
     name: Deploy to EC2
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: build
     
     steps:
-      - uses: actions/checkout@v2 
-      - name: Build & Deploy
-        env:
-            PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-            HOSTNAME: ${{secrets.HOST}}
-            USER_NAME: ${{secrets.USERNAME}}
-      
-        run: |
-          echo "$PRIVATE_KEY"
-          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key ${USERNAME}@${HOST} '
-          pwd ; ls
-          whoami
-          cd /var/app
-          npm install -g serve
-          serve -s build &
-          curl http://localhost:3000'
+         - run: pwd ; ls
+         - run: cd /var/app
+         - run: npm install -g serve
+         - run: serve -s build &
+         - run: curl http://localhost:3000
