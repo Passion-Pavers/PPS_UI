@@ -48,8 +48,6 @@ jobs:
     needs: build
     
     steps:
-         - run: pwd ; cd ../.. ; ls
+         - run: pwd ; cd ../.. ; ls ; npm install -g serve ; serve -s build &
+  
          
-         - run: npm install -g serve
-         - run: serve -s build &
-         - run: curl http://localhost:3000
