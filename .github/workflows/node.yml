@@ -49,7 +49,7 @@ jobs:
     
     steps:
          - run: pwd 
-         - run: cd /var/app
+         
          - run: pwd
          - run: ls
          - run: npm install -g serve
