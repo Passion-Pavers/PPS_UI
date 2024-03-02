@@ -48,6 +48,6 @@ jobs:
     needs: build
     
     steps:
-         - run: pwd ; cd ../.. ; ls ; sudo npm install -g serve ; sudo netstat -tuln | grep 3000 && sudo kill $(sudo lsof -t -i:3000) ; nohup serve -s build & 
+         - run: pwd ; cd ../.. ; ls ; sudo npm install -g serve ; sudo netstat -tuln | grep 3000 && sudo kill $(sudo lsof -t -i:3000) ;sleep 10; nohup serve -s build & 
   
          
