@@ -48,6 +48,6 @@ jobs:
     needs: build
     
     steps:
-         - run: pwd ; cd ../.. ; ls ; sudo npm install -g serve ; nohup serve -s build > serve.log 2>&1 & 
+         - run: pwd ; cd ../.. ; ls ; sudo npm install -g serve ; nohup bash serve -s build  & 
   
          
