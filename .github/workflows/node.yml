@@ -41,7 +41,7 @@ jobs:
         source: "./build/*"
         target: "/var/app"
         
-          
+         
   deploy:
     name: Deploy to EC2
     runs-on: self-hosted
