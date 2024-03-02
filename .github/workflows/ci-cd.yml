@@ -47,6 +47,6 @@ jobs:
     needs: build
     
     steps:
-         - run: pwd ; cd ../.. ; ls ; sudo npm install --global http-server ; sudo netstat -tuln | grep 3000 && sudo kill $(sudo lsof -t -i:3000) ;sleep 10; nohup http-server -p 3000 ./build &
+         - run: pwd ; cd ../.. ; ls ; 
   
          
