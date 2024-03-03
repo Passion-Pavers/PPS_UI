@@ -14,9 +14,11 @@ const register = async (registrationRequest) => {
   return response;
 };
 
+
 const loginService = {
   login,
   register,
 };
 
 export default loginService;
+
