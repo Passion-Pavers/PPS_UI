@@ -22,8 +22,8 @@ const Login = () => {
     password: "",
     showPassword: false,
   });
-  const { showLoading, hideLoading } = useLoading();
 
+  const { showLoading, hideLoading } = useLoading();
   const navigate = useNavigate();
   const { login } = useAuth();
   const showSnackbar = useSnackbar();
@@ -52,12 +52,8 @@ const Login = () => {
         const user = loginResponse?.data?.result;
         const authToken = user.token;
         login(authToken);
-        const previousPath = window.sessionStorage.getItem("previousPath");
-        //console.log("previousPath on login func: ", previousPath);
-        const redirectPath = previousPath ? previousPath : "/";
-        //console.log("redirectPath on login func: ", redirectPath);
         setTimeout(() => {
-          navigate(redirectPath);
+          navigate("/mycreds");
         }, 250);
       } catch (error) {
         console.error("Login failure Exception:", error);

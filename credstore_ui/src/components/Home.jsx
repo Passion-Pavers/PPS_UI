@@ -14,10 +14,10 @@ const Home = () => {
   return (
     <Container>
       <Typography variant="h4" align="center" sx={{ mt: 4 }}>
-        Welcome to Passion Pavers Services (PPS)
+        Welcome to Cred Store
       </Typography>
       <Typography variant="h6" align="center" sx={{ mt: 2, mb: 4 }}>
-        Path to Build Your Passion
+        One store for all your Credentials
       </Typography>
 
       <Grid container spacing={3}>
@@ -27,13 +27,8 @@ const Home = () => {
               Our Work
             </Typography>
             <Typography>
-              At Passion Pavers Services, we specialize in building fully
-              customizable websites for our users. Our unique approach allows
-              users to visually customize their applications, and with a single
-              click, we generate all the necessary components to create a
-              stunning website tailored to their needs. Whether you're
-              passionate about business, art, or any other endeavor, we provide
-              a platform for you to showcase your passion effortlessly.
+              At Cred Store, we specialize in maneging your credentals for
+              different websites.
             </Typography>
           </ColoredCard>
         </Grid>
@@ -43,13 +38,7 @@ const Home = () => {
               About Us
             </Typography>
             <Typography>
-              Passion Pavers Services (PPS) is committed to empowering
-              individuals and businesses to express their passion through
-              visually appealing and highly customizable websites. Our one-click
-              publish feature simplifies the process, allowing users to bring
-              their ideas to life without the need for extensive technical
-              knowledge. Join us on the path to building your passion and
-              showcasing it to the world.
+              Cred Store is committed to Credentails management Easy.
             </Typography>
           </ColoredCard>
         </Grid>

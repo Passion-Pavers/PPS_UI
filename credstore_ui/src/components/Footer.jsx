@@ -1,4 +1,4 @@
-// src/components/Footer.jsx
+// Footer.js
 
 import React from "react";
 import { Typography, Link, Paper, Grid } from "@mui/material";
@@ -17,10 +17,10 @@ const Footer = () => {
       <Grid container justifyContent="space-between">
         <Grid item xs={12} sm={6}>
           <Typography variant="h6" gutterBottom>
-            Passion Paver Services
+            Cred Store
           </Typography>
           <Typography variant="caption" gutterBottom>
-            Path to build your Passion @2024
+            One store for all your Credentials @2024
           </Typography>
           <Typography>Your address goes here.</Typography>
         </Grid>

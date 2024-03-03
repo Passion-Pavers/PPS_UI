@@ -6,21 +6,19 @@ import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Registration from "./components/Registration";
 import { SnackbarProvider } from "./context/SnackbarProvider";
-import PpApps from "./components/PpApps";
 import PrivateRoute from "./components/PrivateRoute";
 import Home from "./components/Home";
-import PreviewApp from "./components/PreviewApp";
+import MyCreds from "./components/MyCreds";
 import { LoadingProvider } from "./context/LoadingContext";
-import NoAuthRequiredRoute from "./components/NoAuthRequiredRoute";
 
 function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        main: "#263238", // Update this to your desired primary color
+        main: "#607d8b", // Update this to your desired primary color
       },
       secondary: {
-        main: "#607d8b", // Update this to your desired secondary color
+        main: "#37474f", // Update this to your desired secondary color
       },
     },
   });
@@ -44,33 +42,26 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <LoadingProvider>
-        <Router>
-          <SnackbarProvider>
+      <Router>
+        <SnackbarProvider>
+          <LoadingProvider>
             <Paper style={styles.container}>
               <Header1 />
               <div style={styles.mainContent}>
                 <Routes>
                   <Route path="/" element={<Home />} />
-                  <Route path="/home" element={<Home />} />
                   <Route path="/" element={<PrivateRoute />}>
-                    <Route path="/ppapps" element={<PpApps />} />
-                    <Route
-                      path="/ppapps/preview/:appName"
-                      element={<PreviewApp />}
-                    />
+                    <Route path="/mycreds" element={<MyCreds />} />
                   </Route>
-                  <Route path="/" element={<NoAuthRequiredRoute />}>
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Registration />} />
-                  </Route>
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Registration />} />
                 </Routes>
               </div>
               <Footer style={styles.footer} />
             </Paper>
-          </SnackbarProvider>
-        </Router>
-      </LoadingProvider>
+          </LoadingProvider>
+        </SnackbarProvider>
+      </Router>
     </ThemeProvider>
   );
 }
