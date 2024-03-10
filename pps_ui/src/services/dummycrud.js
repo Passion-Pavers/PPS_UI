@@ -1,7 +1,7 @@
 import axios from "axios";
 const baseUrl =
-  process.env.REACT_APPS_SERVICE || "http://localhost:5109/api/applications";
-
+  //process.env.REACT_APPS_SERVICE || "http://localhost:5109/api/applications";
+    process.env.REACT_APPS_SERVICE || "http://3.85.17.0:5001/api/applications";
 let token = null;
 
 const setToken = (newToken) => {
