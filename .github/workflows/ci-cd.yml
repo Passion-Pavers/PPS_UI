@@ -90,6 +90,6 @@ jobs:
     needs: pp-build
     
     steps:
-         - run: pwd ; cd .. ; ls ;sudo netstat -tuln | grep 6000 && sudo kill $(sudo lsof -t -i:6000) ;sleep 10;sudo yum install tmux -y ; sudo npm install -g serve ;  RUNNER_TRACKING_ID="" && tmux new-session -d -s serve-session 'serve -s build' 
+         - run: pwd ; cd .. ; ls ;sudo netstat -tuln | grep 6000 && sudo kill $(sudo lsof -t -i:6000) ;sleep 10;sudo yum install tmux -y ; sudo npm install -g serve ;  RUNNER_TRACKING_ID="" && tmux new-session -d -s serve-session1 'serve -s build' 
   
          
