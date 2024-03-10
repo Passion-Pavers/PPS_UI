@@ -1,7 +1,9 @@
-name: Build and Deploy
+name: MY CI
 
-on: workflow_dispatch
-
+on:
+  push:
+    branches: [ "feature/USS31002_SN" ]
+ 
 
 
 jobs:
@@ -12,7 +14,7 @@ jobs:
     strategy:
       matrix:
         node-version: [ 18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        
 
     steps:
     - uses: actions/checkout@v3
