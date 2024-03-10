@@ -6,6 +6,8 @@ on:
     workflows: ["Node.js CI"]
     types:
       - completed
+    branches:
+            -"feature/USS31002_SN"
 
 jobs:
   pp-build:
