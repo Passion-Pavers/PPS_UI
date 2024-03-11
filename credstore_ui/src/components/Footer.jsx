@@ -1,4 +1,4 @@
-// Footer.js
+// src/components/Footer.jsx
 
 import React from "react";
 import { Typography, Link, Paper, Grid } from "@mui/material";
@@ -9,6 +9,7 @@ const StyledFooter = styled(Paper)(({ theme }) => ({
   marginTop: theme.spacing(2),
   backgroundColor: theme.palette.primary.main, // Set your desired background color
   color: theme.palette.primary.contrastText, // Set your desired text color
+  width: "100%",
 }));
 
 const Footer = () => {

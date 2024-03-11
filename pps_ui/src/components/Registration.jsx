@@ -17,8 +17,6 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import loginService from "../services/authService";
 import { useSnackbar } from "../context/SnackbarProvider";
-import LoadingSpinner from "./LoadingSpinner";
-import { useLoading } from "../context/LoadingContext";
 
 const Registration = () => {
   const [values, setValues] = useState({
@@ -30,7 +28,6 @@ const Registration = () => {
     role: "",
     showPassword: false,
   });
-  const { showLoading, hideLoading } = useLoading();
   const navigate = useNavigate();
   const showSnackbar = useSnackbar();
 
@@ -47,7 +44,6 @@ const Registration = () => {
   };
 
   const handleRegistration = async (event) => {
-    showLoading();
     event.preventDefault();
 
     try {
@@ -82,9 +78,7 @@ const Registration = () => {
       // Show Error Snackbar
       showSnackbar(errorMessage, "error");
     } finally {
-      setTimeout(() => {
-        hideLoading();
-      }, 250);
+      setTimeout(() => {}, 250);
     }
   };
 
@@ -185,7 +179,6 @@ const Registration = () => {
           </Button>
         </form>
       </Paper>
-      <LoadingSpinner />
     </>
   );
 };

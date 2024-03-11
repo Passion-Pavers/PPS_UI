@@ -57,10 +57,19 @@ const Header = () => {
   return (
     <AppBar position="static">
       <Toolbar>
+        {/* Logo Image */}
+        <StyledLink to="/">
+          <img
+            src=".\PPS_YGS_LOGO3.png"
+            alt="Your Logo"
+            style={{ height: 40, marginRight: 10 }}
+          />
+        </StyledLink>
+        {/* Website Name */}
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Passion Pavers Services
         </Typography>
-        {/* Always visible in the header */}
+        {/* Navigation Links */}
         <StyledLink to="/">Home</StyledLink>
         <StyledLink to="/ppapps">Applications</StyledLink>
         {!authToken && (
@@ -70,6 +79,7 @@ const Header = () => {
           </>
         )}
         <StyledLink to="/aboutus">About Us</StyledLink>
+        {/* Hamburger Menu */}
         <IconButton
           size="large"
           edge="end"
@@ -78,7 +88,7 @@ const Header = () => {
         >
           <MenuIcon />
         </IconButton>
-        {/* Visible in the hamburger menu */}
+        {/* Menu Items */}
         <Menu
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}

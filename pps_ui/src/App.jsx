@@ -1,7 +1,7 @@
 import React from "react";
 import { CssBaseline, ThemeProvider, createTheme, Paper } from "@mui/material";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header1 from "./components/Header";
+import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Registration from "./components/Registration";
@@ -10,7 +10,6 @@ import PpApps from "./components/PpApps";
 import PrivateRoute from "./components/PrivateRoute";
 import Home from "./components/Home";
 import PreviewApp from "./components/PreviewApp";
-import { LoadingProvider } from "./context/LoadingContext";
 import NoAuthRequiredRoute from "./components/NoAuthRequiredRoute";
 
 function App() {
@@ -44,33 +43,31 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <LoadingProvider>
-        <Router>
-          <SnackbarProvider>
-            <Paper style={styles.container}>
-              <Header1 />
-              <div style={styles.mainContent}>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/home" element={<Home />} />
-                  <Route path="/" element={<PrivateRoute />}>
-                    <Route path="/ppapps" element={<PpApps />} />
-                    <Route
-                      path="/ppapps/preview/:appName"
-                      element={<PreviewApp />}
-                    />
-                  </Route>
-                  <Route path="/" element={<NoAuthRequiredRoute />}>
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Registration />} />
-                  </Route>
-                </Routes>
-              </div>
-              <Footer style={styles.footer} />
-            </Paper>
-          </SnackbarProvider>
-        </Router>
-      </LoadingProvider>
+      <Router>
+        <SnackbarProvider>
+          <Paper style={styles.container}>
+            <Header />
+            <div style={styles.mainContent}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/" element={<PrivateRoute />}>
+                  <Route path="/ppapps" element={<PpApps />} />
+                  <Route
+                    path="/ppapps/preview/:appName"
+                    element={<PreviewApp />}
+                  />
+                </Route>
+                <Route path="/" element={<NoAuthRequiredRoute />}>
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Registration />} />
+                </Route>
+              </Routes>
+            </div>
+            <Footer style={styles.footer} />
+          </Paper>
+        </SnackbarProvider>
+      </Router>
     </ThemeProvider>
   );
 }

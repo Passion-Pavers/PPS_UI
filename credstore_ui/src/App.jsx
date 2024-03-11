@@ -1,7 +1,7 @@
 import React from "react";
 import { CssBaseline, ThemeProvider, createTheme, Paper } from "@mui/material";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header1 from "./components/Header";
+import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Registration from "./components/Registration";
@@ -9,13 +9,13 @@ import { SnackbarProvider } from "./context/SnackbarProvider";
 import PrivateRoute from "./components/PrivateRoute";
 import Home from "./components/Home";
 import MyCreds from "./components/MyCreds";
-import { LoadingProvider } from "./context/LoadingContext";
+import NoAuthRequiredRoute from "./components/NoAuthRequiredRoute";
 
 function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        main: "#607d8b", // Update this to your desired primary color
+        main: "#455a64", // Update this to your desired primary color
       },
       secondary: {
         main: "#37474f", // Update this to your desired secondary color
@@ -44,22 +44,23 @@ function App() {
       <CssBaseline />
       <Router>
         <SnackbarProvider>
-          <LoadingProvider>
-            <Paper style={styles.container}>
-              <Header1 />
-              <div style={styles.mainContent}>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/" element={<PrivateRoute />}>
-                    <Route path="/mycreds" element={<MyCreds />} />
-                  </Route>
+          <Paper style={styles.container}>
+            <Header />
+            <div style={styles.mainContent}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/" element={<PrivateRoute />}>
+                  <Route path="/mycreds" element={<MyCreds />} />
+                </Route>
+                <Route path="/" element={<NoAuthRequiredRoute />}>
                   <Route path="/login" element={<Login />} />
                   <Route path="/register" element={<Registration />} />
-                </Routes>
-              </div>
-              <Footer style={styles.footer} />
-            </Paper>
-          </LoadingProvider>
+                </Route>
+              </Routes>
+            </div>
+            <Footer style={styles.footer} />
+          </Paper>
         </SnackbarProvider>
       </Router>
     </ThemeProvider>

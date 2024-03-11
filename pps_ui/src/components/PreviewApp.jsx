@@ -11,7 +11,7 @@ const PreviewApp = () => {
   let appUrl;
   switch (appName) {
     case "CredStore":
-      appUrl = "http://localhost:3000/";
+      appUrl = "http://localhost:3001/";
       break;
     case "AnotherApp":
       appUrl = "http://localhost:3000/";

@@ -13,8 +13,8 @@ import loginService from "../services/authService";
 import { useSnackbar } from "../context/SnackbarProvider";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { setAuthToken } from "../services/httpService";
 import LoadingSpinner from "./LoadingSpinner";
-import { useLoading } from "../context/LoadingContext";
 
 const Login = () => {
   const [values, setValues] = useState({
@@ -22,8 +22,8 @@ const Login = () => {
     password: "",
     showPassword: false,
   });
+  const [loading, setLoading] = useState(false);
 
-  const { showLoading, hideLoading } = useLoading();
   const navigate = useNavigate();
   const { login } = useAuth();
   const showSnackbar = useSnackbar();
@@ -40,7 +40,7 @@ const Login = () => {
     event.preventDefault();
   };
   const handleLogin = async (event) => {
-    showLoading();
+    setLoading(true);
     event.preventDefault();
     const loginRequest = {
       userName: values.email,
@@ -52,8 +52,13 @@ const Login = () => {
         const user = loginResponse?.data?.result;
         const authToken = user.token;
         login(authToken);
+        setAuthToken();
+        const previousPath = window.sessionStorage.getItem("previousPath");
+        //console.log("previousPath on login func: ", previousPath);
+        const redirectPath = previousPath ? previousPath : "/";
+        //console.log("redirectPath on login func: ", redirectPath);
         setTimeout(() => {
-          navigate("/mycreds");
+          navigate(redirectPath);
         }, 250);
       } catch (error) {
         console.error("Login failure Exception:", error);
@@ -64,11 +69,15 @@ const Login = () => {
         showSnackbar(errorMessage, "error");
       } finally {
         setTimeout(() => {
-          hideLoading();
+          setLoading(false);
         }, 250);
       }
     }
   };
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <>
@@ -115,7 +124,6 @@ const Login = () => {
           </Button>
         </form>
       </Paper>
-      <LoadingSpinner />
     </>
   );
 };

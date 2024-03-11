@@ -18,7 +18,6 @@ import { useNavigate } from "react-router-dom";
 import loginService from "../services/authService";
 import { useSnackbar } from "../context/SnackbarProvider";
 import LoadingSpinner from "./LoadingSpinner";
-import { useLoading } from "../context/LoadingContext";
 
 const Registration = () => {
   const [values, setValues] = useState({
@@ -30,7 +29,7 @@ const Registration = () => {
     role: "",
     showPassword: false,
   });
-  const { showLoading, hideLoading } = useLoading();
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const showSnackbar = useSnackbar();
 
@@ -47,9 +46,8 @@ const Registration = () => {
   };
 
   const handleRegistration = async (event) => {
-    showLoading();
+    setLoading(true);
     event.preventDefault();
-
     try {
       // Assuming you want to create a registrationRequest object
       const registrationRequest = {
@@ -83,10 +81,14 @@ const Registration = () => {
       showSnackbar(errorMessage, "error");
     } finally {
       setTimeout(() => {
-        hideLoading();
+        setLoading(false);
       }, 250);
     }
   };
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <>
@@ -185,7 +187,6 @@ const Registration = () => {
           </Button>
         </form>
       </Paper>
-      <LoadingSpinner />
     </>
   );
 };

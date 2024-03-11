@@ -6,7 +6,14 @@ import { Outlet, Navigate } from "react-router-dom";
 const PrivateRoute = () => {
   //const { authToken } = useAuth();
   const authToken = window.localStorage.getItem("authToken");
-  return authToken ? <Outlet /> : <Navigate to="/login" />;
+
+  if (!authToken) {
+    window.sessionStorage.setItem("previousPath", window.location.pathname);
+    return <Navigate to="/login" />;
+  } else {
+    window.sessionStorage.removeItem("previousPath");
+    return <Outlet />;
+  }
 };
 
 export default PrivateRoute;
