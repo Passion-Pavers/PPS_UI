@@ -1,4 +1,4 @@
-import React from "react";
+import { React } from "react";
 import { CssBaseline, ThemeProvider, createTheme, Paper } from "@mui/material";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";

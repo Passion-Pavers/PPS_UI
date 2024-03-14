@@ -8,7 +8,13 @@ import {
   GridToolbarFilterButton,
   GridToolbarExport,
 } from "@mui/x-data-grid";
-import { IconButton, TextField, Button, InputAdornment } from "@mui/material";
+import {
+  IconButton,
+  TextField,
+  Button,
+  InputAdornment,
+  Box,
+} from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
@@ -17,6 +23,7 @@ import ppappsService from "../services/ppAppsService";
 import { useSnackbar } from "../context/SnackbarProvider";
 import CRED_STORE_CONSTANTS from "../util/constants";
 import LoadingSpinner from "./LoadingSpinner";
+import { useAppDispConfig } from "../context/AppDisplayConfigContext";
 
 const columns = [
   { field: "id", headerName: "ID", flex: 1 },
@@ -56,6 +63,8 @@ const CustomToolbar = () => (
 );
 
 const MyCreds = () => {
+  const { appDisplayConfig } = useAppDispConfig();
+
   const [values, setValues] = useState({
     websiteName: "",
     userName: "",
@@ -213,22 +222,15 @@ const MyCreds = () => {
   return (
     <div
       style={{
-        paddingBottom: "64px",
         boxSizing: "border-box",
       }}
     >
-      <div
-        style={{
-          height: 400,
-          width: "97%",
-          margin: "0 auto",
-        }}
-      >
+      <Box sx={{ width: "97%", margin: "auto" }}>
         <form
           onSubmit={selectedRow ? updateCredential : addCredential}
           style={{ display: "flex", flexDirection: "column" }}
         >
-          <h2>My credentials management</h2>
+          <h2>{appDisplayConfig?.MainContent?.title}</h2>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <TextField
               label="Website Name"
@@ -277,7 +279,8 @@ const MyCreds = () => {
             {selectedRow ? "Update credential" : "Add new credential"}
           </Button>
         </form>
-        <h2>Credentials List </h2>
+        <h2> {appDisplayConfig?.MainContent?.credsGridTitle} </h2>
+
         <DataGrid
           rows={rows}
           columns={[
@@ -296,13 +299,21 @@ const MyCreds = () => {
               ),
             },
           ]}
-          pageSize={5}
+          initialState={{
+            pagination: {
+              paginationModel: {
+                pageSize: 5,
+              },
+            },
+          }}
+          pageSizeOptions={[5]}
           checkboxSelection
+          disableRowSelectionOnClick
           components={{
             Toolbar: CustomToolbar,
           }}
         />
-      </div>
+      </Box>
     </div>
   );
 };

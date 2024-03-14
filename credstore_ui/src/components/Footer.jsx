@@ -3,6 +3,7 @@
 import React from "react";
 import { Typography, Link, Paper, Grid } from "@mui/material";
 import { styled } from "@mui/system";
+import { useAppDispConfig } from "../context/AppDisplayConfigContext";
 
 const StyledFooter = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(2),
@@ -13,23 +14,26 @@ const StyledFooter = styled(Paper)(({ theme }) => ({
 }));
 
 const Footer = () => {
+  const { appDisplayConfig } = useAppDispConfig();
   return (
     <StyledFooter elevation={5}>
       <Grid container justifyContent="space-between">
         <Grid item xs={12} sm={6}>
           <Typography variant="h6" gutterBottom>
-            Cred Store
+            {appDisplayConfig?.footer?.appName}
           </Typography>
           <Typography variant="caption" gutterBottom>
-            One store for all your Credentials @2024
+            {appDisplayConfig?.footer?.appTagLine}
           </Typography>
-          <Typography>Your address goes here.</Typography>
+          <Typography>{appDisplayConfig?.footer?.contactAddress} </Typography>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Typography variant="h6" gutterBottom>
             Contact Us
           </Typography>
-          <Typography>Email: your.email@example.com</Typography>
+          <Typography>
+            Email: {appDisplayConfig?.footer?.contactEmail}{" "}
+          </Typography>
           <Link href="/contact" color="inherit">
             Contact Form
           </Link>

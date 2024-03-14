@@ -7,7 +7,9 @@ const ppappsService = {
   getAll: async () => {
     try {
       setAuthToken();
-      const response = await httpService.get("/applications");
+      const response = await httpService.get(
+        "/Application/GetActiveApplications"
+      );
       return response.data;
     } catch (error) {
       throw error;

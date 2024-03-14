@@ -41,8 +41,8 @@ const PreviewApp = () => {
       <iframe
         title={appName}
         src={appUrl}
-        width="90%"
-        height="500px"
+        width="95%"
+        height="600px"
         frameBorder="0"
         scrolling="auto"
       ></iframe>

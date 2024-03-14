@@ -11,6 +11,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import styled from "@mui/system/styled";
 import { useAuth } from "../context/AuthContext";
+import { useAppDispConfig } from "../context/AppDisplayConfigContext";
 
 const StyledLink = styled(Link)`
   color: inherit;
@@ -26,6 +27,7 @@ const StyledLink = styled(Link)`
 `;
 
 const Header = () => {
+  const { appDisplayConfig } = useAppDispConfig();
   const [anchorEl, setAnchorEl] = useState(null);
   const [menuItems, setMenuItems] = useState([]);
   const { logout } = useAuth();
@@ -58,7 +60,7 @@ const Header = () => {
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Cred Store
+          {appDisplayConfig?.appName}
         </Typography>
         {/* Always visible in the header */}
         <StyledLink to="/">Home</StyledLink>

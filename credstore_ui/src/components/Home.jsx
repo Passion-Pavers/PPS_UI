@@ -1,6 +1,7 @@
 import React from "react";
 import { Typography, Container, Grid, Card } from "@mui/material";
 import { styled } from "@mui/system";
+import { useAppDispConfig } from "../context/AppDisplayConfigContext";
 
 const ColoredCard = styled(Card)(({ theme }) => ({
   padding: theme.spacing(3),
@@ -11,13 +12,15 @@ const ColoredCard = styled(Card)(({ theme }) => ({
 }));
 
 const Home = () => {
+  const { appDisplayConfig } = useAppDispConfig();
+
   return (
     <Container>
       <Typography variant="h4" align="center" sx={{ mt: 4 }}>
-        Welcome to Cred Store
+        {appDisplayConfig?.welcomeMessage}
       </Typography>
       <Typography variant="h6" align="center" sx={{ mt: 2, mb: 4 }}>
-        One store for all your Credentials
+        {appDisplayConfig?.appTagLine}
       </Typography>
 
       <Grid container spacing={3}>

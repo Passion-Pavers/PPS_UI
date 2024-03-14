@@ -15,10 +15,11 @@ const PpApps = () => {
     setLoading(true);
     async function startFetchingData() {
       try {
-        const json = await ppappsService.getAll();
-        console.log("API Response:", json);
+        const response = await ppappsService.getAll();
+        console.log("API Response:", response);
+        const data = response?.data;
         if (!ignore) {
-          setData(json);
+          setData(data);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
