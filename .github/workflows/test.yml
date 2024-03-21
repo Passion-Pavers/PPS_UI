@@ -13,7 +13,7 @@ jobs:
 
       - name: Install dependencies and build artifacts
         run: |
-         
+          cd ./pps_ui
           npm install  
           npm run build  
 
